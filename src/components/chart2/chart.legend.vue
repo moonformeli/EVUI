@@ -40,7 +40,7 @@
   };
 </script>
 <style scoped>
-  .ev-chart-legend{
+  .ev-chart-legend {
     position: absolute;
     width: 100px;
     height: 100%;
@@ -52,7 +52,7 @@
   }
 
   .ev-chart-legend-container {
-    position: relative;d
+    position: relative;
     overflow: hidden;
     margin: 2px 10px 2px 0;
   }
