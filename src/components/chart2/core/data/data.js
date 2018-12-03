@@ -25,6 +25,11 @@ export default class DataStore {
     this.yMinMax = [];
     this.sIdx = 0;
     this.groups = this.chartData.groups;
+
+    const measureCanvas = document.createElement('canvas');
+    this.measureCtx = measureCanvas.getContext('2d');
+    this.measureCtx.font = '12px sans-serif';
+    this.maxSeriesWidth = 0;
   }
 
   /**
@@ -89,6 +94,9 @@ export default class DataStore {
     if (this.getSeriesExtends) {
       series = this.getSeriesExtends(defaultSeries, param);
     }
+
+    const sw = Math.ceil(this.measureCtx.measureText(series.name).width);
+    this.maxSeriesWidth = Math.max(this.maxSeriesWidth, sw);
 
     if (!this.seriesList[id]) {
       this.seriesList[id] = series;
@@ -496,6 +504,10 @@ export default class DataStore {
 
   getGroups() {
     return this.groups;
+  }
+
+  getMaxSeriesWidth() {
+    return this.maxSeriesWidth;
   }
 
   updateData() {

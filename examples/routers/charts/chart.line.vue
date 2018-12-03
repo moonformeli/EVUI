@@ -16,7 +16,7 @@
       return {
         defaultData: {
           series: {
-            series1: { name: 'series#1', show: true, type: 'line', fill: true, point: true },
+            series1: { name: 'series#1123123', show: true, type: 'line', fill: true, point: true },
             series2: { name: 'series#2', show: true, type: 'line', fill: true, point: true },
             series3: { name: 'series#3', show: true, type: 'line', fill: true, point: true },
           },
@@ -62,11 +62,11 @@
       };
     },
     mounted() {
-      this.interval = setTimeout(() => this.updateData(), 2000);
-      this.interval2 = setTimeout(() => this.updateData2(), 4000);
-      this.interval3 = setTimeout(() => this.updateData3(), 6000);
-      this.interval4 = setTimeout(() => this.updateData4(), 8000);
-      this.interval5 = setTimeout(() => this.updateData5(), 10000);
+      // this.interval = setTimeout(() => this.updateData(), 2000);
+      // this.interval2 = setTimeout(() => this.updateData2(), 4000);
+      // this.interval3 = setTimeout(() => this.updateData3(), 6000);
+      // this.interval4 = setTimeout(() => this.updateData4(), 8000);
+      // this.interval5 = setTimeout(() => this.updateData5(), 10000);
     },
     methods: {
       updateData() {

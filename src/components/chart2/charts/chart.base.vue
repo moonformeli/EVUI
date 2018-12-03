@@ -134,7 +134,7 @@
         const option = { prop: this.chartProp, size: this.chartSize };
 
         const padding = option.prop.padding;
-        const parentDOM = this.$parent.$refs.container;
+        const parentDOM = this.$parent.$refs.inner;
 
         const width = parentDOM.offsetWidth;
         const height = parentDOM.offsetHeight;

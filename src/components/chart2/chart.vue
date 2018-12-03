@@ -1,24 +1,27 @@
 <template>
   <div
     ref="wrapper"
-    :style="chartStyle"
+    :style="wrapperStyle"
     class="ev-chart-wrapper"
   >
     <chart-title :title-prop="chartSize.title"/>
     <div
       ref="container"
+      :style="containerStyle"
       class="ev-chart-container"
-      style="width: 100%; height: 100%;"
     >
-      <chart
-        v-if="isMounted"
-        :chart-prop="chartProp"
-        :chart-size="chartSize"
-        :chart-store="chartStore"
-      />
+      <div
+        ref="inner"
+        style="width: 100%; height: 100%;">
+        <chart
+          v-if="isMounted"
+          :chart-prop="chartProp"
+          :chart-size="chartSize"
+          :chart-store="chartStore"
+        />
+      </div>
+      <chart-legend :chart-store="chartStore"/>
     </div>
-    <chart-split :legend-prop="chartSize.legend"/>
-    <chart-legend :chart-store="chartStore"/>
   </div>
 </template>
 <script>
@@ -79,14 +82,49 @@
       chartProp() {
         return _.merge({}, this.normalized.prop, this.propOption);
       },
-      chartStyle() {
+      wrapperStyle() {
         const size = this.chartSize;
-        const title = size.title;
-
         return {
           width: this.getSize(ChartUtil.quantity(size.width)),
           height: this.getSize(ChartUtil.quantity(size.height)),
-          paddingTop: `${title.show ? title.style.height : 0}px`,
+        };
+      },
+      containerStyle() {
+        const legendOption = this.chartSize.legend;
+        const titleOption = this.chartSize.title;
+        const legendShow = legendOption.show;
+        const titleShow = titleOption.show;
+        const legendPos = legendOption.position;
+        const legendWidth = this.chartStore.getMaxSeriesWidth();
+        const titleHeight = titleShow ? titleOption.style.height : 0;
+        const legendHeight = legendShow ? 50 : 0;
+        let padding = '0 0 0 0';
+
+
+        if (legendShow) {
+          switch (legendPos) {
+            case 'top':
+              padding = `${legendHeight + titleHeight}px 0 0 0`;
+              break;
+            case 'left':
+              padding = `${titleHeight}px 0 0 ${legendWidth}px`;
+              break;
+            case 'bottom':
+              padding = `${titleHeight} 0 ${legendHeight}px 0`;
+              break;
+            case 'right':
+            default:
+              padding = `${titleHeight}px ${legendWidth}px 0 0`;
+              break;
+          }
+        }
+
+        return {
+          position: 'relative',
+          boxSizing: 'border-box',
+          width: '100%',
+          height: '100%',
+          padding,
         };
       },
       chartStore() {
@@ -113,7 +151,7 @@
       this.store.init();
     },
     mounted() {
-      this.isMounted = true;
+      this.$nextTick(() => { this.isMounted = true; });
     },
     methods: {
       initChartOption() {
@@ -220,7 +258,5 @@
 <style scoped>
   .ev-chart-wrapper {
     position: relative;
-    top: 0;
-    left: 0;
   }
 </style>

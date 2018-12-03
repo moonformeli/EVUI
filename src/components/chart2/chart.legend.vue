@@ -1,13 +1,11 @@
 <template>
-  <div>
+  <div class="ev-chart-legend">
     <div
       v-for="item in seriesList"
-      :key="item"
-      class="ev-chart-legend">
-      <div class="ev-chart-legend-container">
-        <span class="ev-chart-legend-color"/>
-        <div class="ev-chart-legend-name"> {{ item.name }}</div>
-      </div>
+      :key="item.id"
+      class="ev-chart-legend-container">
+      <span class="ev-chart-legend-color"/>
+      <div class="ev-chart-legend-name">{{ item.name }}</div>
     </div>
   </div>
 </template>
