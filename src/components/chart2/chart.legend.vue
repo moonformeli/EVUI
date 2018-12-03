@@ -42,14 +42,17 @@
 <style scoped>
   .ev-chart-legend{
     position: absolute;
-    width: 100%;
+    width: 100px;
     height: 100%;
-    padding: 0 0 0 10px;
+    top: 40px;
+    right: 0;
+    left: auto;
+    padding: 0;
     overflow: auto;
   }
 
   .ev-chart-legend-container {
-    position: relative;
+    position: relative;d
     overflow: hidden;
     margin: 2px 10px 2px 0;
   }
