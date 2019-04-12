@@ -2,37 +2,37 @@
   <div>
     <h5># normal</h5>
     <br>
-    <Checkbox-group
+    <ev-checkbox-group
       v-model="bindList0"
       @change-event="changeEvent"
     >
-      <Checkbox
+      <ev-checkbox
         :value="obj0[0].value"
         class="checkboxStyle"
       >
         {{ obj0[0].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[1].value"
         class="checkboxStyle"
       >
         {{ obj0[1].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[2].value"
         :disabled="false"
         class="checkboxStyle"
       >
         {{ obj0[2].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[3].value"
         :disabled="true"
         class="checkboxStyle"
       >
         {{ obj0[3].text }}
-      </Checkbox>
-    </Checkbox-group>
+      </ev-checkbox>
+    </ev-checkbox-group>
     <br>
     <br>
     <p>Selected List : {{ bindList0 }}</p>
@@ -40,39 +40,39 @@
     <br>
     <h5># small & square</h5>
     <br>
-    <Checkbox-group
+    <ev-checkbox-group
       v-model="bindList1"
       :type="`square`"
       :size="`small`"
       @change-event="changeEvent1"
     >
-      <Checkbox
+      <ev-checkbox
         :value="obj1[0].value"
         class="checkboxStyle"
       >
         {{ obj1[0].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[1].value"
         class="checkboxStyle"
       >
         {{ obj1[1].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[2].value"
         :disabled="false"
         class="checkboxStyle"
       >
         {{ obj1[2].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[3].value"
         :disabled="true"
         class="checkboxStyle"
       >
         {{ obj1[3].text }}
-      </Checkbox>
-    </Checkbox-group>
+      </ev-checkbox>
+    </ev-checkbox-group>
     <br>
     <br>
     <p>Selected List1 : {{ bindList1 }}</p>
@@ -83,14 +83,8 @@
 </template>
 
 <script>
-  import Checkbox from '@/components/checkbox/checkbox';
-  import CheckboxGroup from '@/components/checkbox/checkbox-group';
 
   export default {
-    components: {
-      Checkbox,
-      CheckboxGroup,
-    },
     data() {
       return {
         obj0: [

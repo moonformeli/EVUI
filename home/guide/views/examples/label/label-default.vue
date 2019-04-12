@@ -3,30 +3,21 @@
     <div
       class="label-demo"
     >
-      <Label
+      <ev-label
         :value="labelValue"
         :size="'medium'"
         :user-cls="'test'"
-      />
-      <Label
+      >``</ev-label>
+      <ev-label
         :ref="'label1'"
         :value="labelValue"
         :size="'large'"
-      />
+      >``</ev-label>
     </div>
   </div>
 </template>
 <script>
-  import Label from '@/components/label/label';
-  import Button from '@/components/button';
-  import inputNumber from '@/components/input/input.number';
-
   export default {
-    components: {
-      Label,
-      Button,
-      inputNumber,
-    },
     data() {
       return {
         width: '40%',

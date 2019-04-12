@@ -4,20 +4,20 @@
       <h5> # Normal </h5>
       <div class="input-inner-width">
         <div>
-          <input-number
+          <ev-input
             :value="2"
           />
         </div>
         <h5> # Disable </h5>
         <div>
-          <input-number
+          <ev-input
             :value="3"
             :disabled="true"
           />
         </div>
         <h5> # Read Only </h5>
         <div>
-          <input-number
+          <ev-input
             :value="2"
             :readonly="true"
           />
@@ -26,25 +26,25 @@
       <h5> # Variation </h5>
 
       <div class="input-demo-multi">
-        <input-number
+        <ev-input
           :readonly="true"
           :value="0.5"
           width="30%"
         />
-        <input-number
+        <ev-input
           :readonly="true"
           :value="-0.5"
           width="30%"
         />
       </div>
       <div>
-        <input-number
+        <ev-input
           :value="Infinity"
           width="70%"
         />
       </div>
       <div>
-        <input-number
+        <ev-input
           :value="-Infinity"
           width="120%"
         />
@@ -53,26 +53,29 @@
 
       <div class="input-inner-width">
         <div>
-          <input-number
+          <ev-input
             :step="12"
             :value="50"
-          />
+          >``
+          </ev-input>
           <p> step: 12</p>
         </div>
         <div>
-          <input-number
+          <ev-input
             :value="2.021"
             :precision="4"
             :step="0.01"
-          />
+          >``
+          </ev-input>
           <p> step: 0.01</p>
         </div>
         <div>
-          <input-number
+          <ev-input
             :value="-0.021"
             :precision="4"
             :step="0.0011"
-          />
+          >``
+          </ev-input>
           <p> step: 0.0011</p>
         </div>
       </div>
@@ -80,14 +83,7 @@
   </div>
 </template>
 <script>
-  import checkbox from '@/components/checkbox/checkbox';
-  import inputNumber from '@/components/input/input.number';
-
   export default {
-    components: {
-      checkbox,
-      inputNumber,
-    },
     data() {
       return {
       };

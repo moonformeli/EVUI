@@ -2,20 +2,20 @@
   <div>
     <h5># normal</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue"
       v-model="vModel"
       class="checkboxStyle"
     >
       Single Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <button
+    <ev-button
       @click="click"
     >
       test
-    </button>
+    </ev-button>
     <br>
     <br>
     bindValue : {{ vModel }}
@@ -24,21 +24,21 @@
     <br>
     <h5># small</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue2"
       v-model="vModel2"
       :size="`small`"
       class="checkboxStyle"
     >
       Single Small Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <button
+    <ev-button
       @click="click2"
     >
       test
-    </button>
+    </ev-button>
     <br>
     <br>
     bindValue2 : {{ vModel2 }}
@@ -47,17 +47,17 @@
     <br>
     <h5># square</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue3"
       v-model="vModel3"
       :type="`square`"
       class="checkboxStyle"
     >
       Single Square Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue4"
       v-model="vModel4"
       :size="`small`"
@@ -65,10 +65,10 @@
       class="checkboxStyle"
     >
       Single Small Square Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue5"
       v-model="vModel5"
       :disabled="true"
@@ -77,23 +77,23 @@
       class="checkboxStyle"
     >
       Single Small Square Disabled Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
     <br>
     <h5># minus</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue6"
       v-model="vModel6"
       :after-type="`minus`"
       class="checkboxStyle"
     >
       Single Circle Minus Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue7"
       v-model="vModel7"
       :after-type="`minus`"
@@ -101,10 +101,10 @@
       class="checkboxStyle"
     >
       Single Circle Small Minus Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue8"
       v-model="vModel8"
       :disabled="true"
@@ -113,10 +113,10 @@
       class="checkboxStyle"
     >
       Single Circle Small Minus Disabled Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue9"
       v-model="vModel9"
       :type="`square`"
@@ -124,10 +124,10 @@
       class="checkboxStyle"
     >
       Single Square Minus Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="bindValue100"
       v-model="vModel100"
       :type="`square`"
@@ -136,10 +136,10 @@
       class="checkboxStyle"
     >
       Single Square Small Minus Checkbox
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
-    <Checkbox
+    <ev-checkbox
       v-model="vModel101"
       :disabled="true"
       :type="`square`"
@@ -148,80 +148,7 @@
       class="checkboxStyle"
     >
       Single Square Small Minus Disabled Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <br>
-    <h5># check</h5>
-    <br>
-    <Checkbox
-      :value="bindValue20"
-      v-model="vModel20"
-      :after-type="`check`"
-      class="checkboxStyle"
-    >
-      Single Circle Border Check Shape Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <Checkbox
-      :value="bindValue21"
-      v-model="vModel21"
-      :after-type="`check`"
-      :size="`small`"
-      class="checkboxStyle"
-    >
-      Single Circle Border Check Shape Small Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <Checkbox
-      :value="bindValue22"
-      v-model="vModel22"
-      :disabled="true"
-      :after-type="`check`"
-      :size="`small`"
-      class="checkboxStyle"
-    >
-      Single Circle Border Check Shape Small Disabled Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <Checkbox
-      :value="bindValue23"
-      v-model="vModel23"
-      :type="`square`"
-      :after-type="`check`"
-      class="checkboxStyle"
-    >
-      Single Square Border Check Shape Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <Checkbox
-      :value="bindValue24"
-      v-model="vModel24"
-      :type="`square`"
-      :after-type="`check`"
-      :size="`small`"
-      class="checkboxStyle"
-    >
-      Single Square Border Check Shape Small Checkbox
-    </Checkbox>
-    <br>
-    <br>
-    <Checkbox
-      :value="bindValue25"
-      v-model="vModel25"
-      :disabled="true"
-      :type="`square`"
-      :after-type="`check`"
-      :size="`small`"
-      class="checkboxStyle"
-    >
-      Single Square Border Check Shape Small Disabled Checkbox
-    </Checkbox>
-    <br>
+    </ev-checkbox>
     <br>
     <br>
     <br>
@@ -231,12 +158,7 @@
 </template>
 
 <script>
-  import Checkbox from '@/components/checkbox/checkbox';
-
   export default {
-    components: {
-      Checkbox,
-    },
     data() {
       return {
         bindValue: 'value01',
@@ -261,18 +183,6 @@
         vModel100: true,
         bindValue101: 'value101',
         vModel101: true,
-        bindValue20: 'value20',
-        vModel20: true,
-        bindValue21: 'value21',
-        vModel21: true,
-        bindValue22: 'value22',
-        vModel22: true,
-        bindValue23: 'value23',
-        vModel23: true,
-        bindValue24: 'value24',
-        vModel24: true,
-        bindValue25: 'value25',
-        vModel25: true,
       };
     },
     methods: {

@@ -1,21 +1,17 @@
 <template>
   <div>
-    <chart
+    <ev-chart
       :data="doughnutChartData"
       :options="doughnutChartOptions"
-    />
+    >``</ev-chart>
     <br>
   </div>
 </template>
 
 <script>
   import '@/styles/evui.css';
-  import chart from '@/components/chart';
 
   export default {
-    components: {
-      chart,
-    },
     data() {
       return {
         doughnutChartData: {

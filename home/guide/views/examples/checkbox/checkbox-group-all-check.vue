@@ -4,47 +4,47 @@
   >
     <h5># normal</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="`allCheckBoxValue`"
       v-model="allCheckClick"
       class="checkboxStyle"
       @change-event="allCheckEvent"
     >
       ALL CHECK
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
     <br>
-    <Checkbox-group
+    <ev-checkbox-group
       v-model="bindList"
       @change-event="changeEvent"
     >
-      <Checkbox
+      <ev-checkbox
         :value="obj0[0].value"
         class="checkboxStyle"
       >
         {{ obj0[0].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[1].value"
         class="checkboxStyle"
       >
         {{ obj0[1].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[2].value"
         :disabled="false"
         class="checkboxStyle"
       >
         {{ obj0[2].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj0[3].value"
         class="checkboxStyle"
       >
         {{ obj0[3].text }}
-      </Checkbox>
-    </Checkbox-group>
+      </ev-checkbox>
+    </ev-checkbox-group>
     <br>
     <br>
     <br>
@@ -56,50 +56,50 @@
     <br>
     <h5># include disabled</h5>
     <br>
-    <Checkbox
+    <ev-checkbox
       :value="`allCheckBoxValue1`"
       v-model="allCheckClick1"
       class="checkboxStyle"
       @change-event="allCheckEvent1"
     >
       ALL CHECK
-    </Checkbox>
+    </ev-checkbox>
     <br>
     <br>
     <br>
-    <Checkbox-group
+    <ev-checkbox-group
       v-model="bindList1"
       @change-event="changeEvent"
     >
-      <Checkbox
+      <ev-checkbox
         :value="obj1[0].value"
         :disabled="obj1[0].disabled"
         class="checkboxStyle"
       >
         {{ obj1[0].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[1].value"
         :disabled="obj1[1].disabled"
         class="checkboxStyle"
       >
         {{ obj1[1].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[2].value"
         :disabled="obj1[2].disabled"
         class="checkboxStyle"
       >
         {{ obj1[2].text }}
-      </Checkbox>
-      <Checkbox
+      </ev-checkbox>
+      <ev-checkbox
         :value="obj1[3].value"
         :disabled="obj1[3].disabled"
         class="checkboxStyle"
       >
         {{ obj1[3].text }}
-      </Checkbox>
-    </Checkbox-group>
+      </ev-checkbox>
+    </ev-checkbox-group>
     <br>
     <br>
     <br>
@@ -113,16 +113,9 @@
 </template>
 
 <script>
-  import Checkbox from '@/components/checkbox/checkbox';
-  import CheckboxGroup from '@/components/checkbox/checkbox-group';
   import _ from 'lodash-es';
 
-  const allList = ['Base01', 'Base02', 'Base03', 'Base04'];
   export default {
-    components: {
-      Checkbox,
-      CheckboxGroup,
-    },
     data() {
       return {
         allCheckClick: false,
@@ -178,6 +171,7 @@
     },
     watch: {
       bindList(list) {
+        const allList = ['Base01', 'Base02', 'Base03', 'Base04'];
         if (!(allList instanceof Array) || !(list instanceof Array)) {
           console.log('All List or Bind List are not correct format (:Array)!');
         } else {
@@ -209,6 +203,7 @@
         console.log(`e : ${e}`);
       },
       allCheckEvent(e) {
+        const allList = ['Base01', 'Base02', 'Base03', 'Base04'];
         if (e.target.checked) {
           this.bindList.splice(0, allList.length, ...allList);
         } else {
