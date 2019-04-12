@@ -37,19 +37,55 @@
       </div>
       <div
         class="evui-codeview-example-bar"
-        @click.stop="onBottomClick"
       >
         <div
           :class="selectIconClasses"
           class="evui-codeview-example-bar-icon"
         >
-          <icon class="fa-sort-down"/>
-          <span
-            class="evui-codeview-example-bar-span"
-          >{{ txtBottomBar }}</span>
+          <div>
+            <icon
+              class="fa-sort-down"/>
+            <span
+              class="evui-codeview-example-bar-span"
+              @click.stop="onBottomClick"
+            >{{ txtBottomBar }}</span>
+          </div>
+          <div>
+            <span
+              class="evui-codeview-example-bar-span"
+              @click.stop="onTryClick"
+            >Try It</span>
+          </div>
         </div>
       </div>
     </div>
+    <form
+      ref="form"
+      method = "post"
+      action = "http://jsfiddle.net/api/post/library/pure/"
+      target = "_blank">
+      <input
+        ref="html"
+        type="hidden"
+        name="html">
+      <input
+        ref="js"
+        type="hidden"
+        name="js">
+      <input
+        ref="css"
+        type="hidden"
+        name="css">
+      <input
+        :value="description"
+        type="hidden"
+        name="title"
+      >
+      <input
+        type="hidden"
+        name="wrap"
+        value="d">
+    </form>
   </div>
 </template>
 
@@ -145,6 +181,39 @@
         }
         this.isExpand = !this.isExpand;
       },
+      onTryClick: function onTryClick() {
+        const parser = new DOMParser();
+        const parseData = parser.parseFromString(this.rawCode, 'text/html');
+        const templateCode = parseData.getElementsByTagName('template')[0].innerHTML;
+        const javascriptCode = parseData.getElementsByTagName('script')[0].innerHTML;
+        const styleCode = parseData.getElementsByTagName('style')[0];
+
+        let scriptLinkString = this.scriptTagInjection('https://unpkg.com/vue')
+          + this.scriptTagInjection('https://unpkg.com/evui@2.1.0/dist/evui.min.js');
+        if (javascriptCode.includes('moment')) {
+          scriptLinkString += this.scriptTagInjection('https://momentjs.com/downloads/moment.js');
+        }
+
+        let vueObjString = javascriptCode;
+        vueObjString = vueObjString.substring(vueObjString.indexOf('{'), vueObjString.lastIndexOf(';'));
+        vueObjString = `{
+        el: '#app', ${vueObjString.substring(vueObjString.indexOf('{') + 1)}`;
+
+        const cssLinkString = '@import url("https://unpkg.com/evui@2.1.0/dist/main.css");';
+
+        const htmlString = `${scriptLinkString}<div id="app">${templateCode.replace(/``/gi, '')}</div>`;
+        const jsString = `new Vue(${vueObjString})`;
+        const cssString = styleCode ? `${cssLinkString}\n${styleCode.innerHTML.trim()}` : cssLinkString;
+
+        this.$refs.html.setAttribute('value', htmlString);
+        this.$refs.js.setAttribute('value', jsString);
+        this.$refs.css.setAttribute('value', cssString);
+        this.$refs.form.submit();
+      },
+      scriptTagInjection(srcString) {
+        return `<script src="${srcString}"><` +
+          '/script>';
+      },
     },
   };
 </script>
@@ -197,7 +266,8 @@
     width: 100%;
     height: 100%;
     line-height: 25px;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
   }
   .evui-codeview-example-bar-icon i{
     height: 100%;
@@ -213,7 +283,12 @@
     opacity: 0;
     transition: all .3s ease-in-out;
   }
-
+  .evui-codeview-example-bar-icon :nth-child(0) div{
+    flex: 2;
+  }
+  .evui-codeview-example-bar-icon :nth-child(1) div{
+    flex: 1;
+  }
   .evui-codeview-example-bar-icon:hover i, .evui-codeview-example-bar-icon:hover span{
     color: rgb(30, 101, 188);
     opacity: 1;

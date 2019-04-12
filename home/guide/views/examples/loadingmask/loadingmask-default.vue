@@ -7,7 +7,7 @@
     >
       <ev-loading-mask
         v-if="isShow"
-      />
+      >``</ev-loading-mask>
       Loading Mask Test Area
     </div>
     <br>

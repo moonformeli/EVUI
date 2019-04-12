@@ -17,7 +17,7 @@
           :multiple="true"
           :init-select-idx="0"
           :items="items0"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel0 }}</span>
@@ -33,7 +33,7 @@
           :multiple="true"
           :init-select-idx="1"
           :items="items1"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel1 }}</span>
@@ -49,7 +49,7 @@
           :multiple="true"
           :init-select-idx="2"
           :items="items2"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel2 }}</span>
@@ -74,7 +74,7 @@
           :multiple="true"
           :init-select-idx="0"
           :items="items3"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel3 }}</span>
@@ -92,7 +92,7 @@
           :multiple="true"
           :init-select-idx="1"
           :items="items4"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel4 }}</span>
@@ -110,7 +110,7 @@
           :multiple="true"
           :init-select-idx="2"
           :items="items5"
-        />
+        >``</ev-selectbox>
         <br><br>
         <span style="font-size: 12px;">value: </span>
         <span style="font-weight: bold; color: blue;">{{ vModel5 }}</span>

@@ -6,7 +6,7 @@
       :read-only="true"
       :init-select-value="'item_2'"
       :items="items"
-    />
+    >``</ev-selectbox>
     <br><br>
     selected value: <span style="font-weight: bold; color: blue;">{{ selectedValue }}</span>
     <br><br><br><br><br><br><br><br><br><br><br><br>

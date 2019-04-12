@@ -1,6 +1,6 @@
 <template>
   <div>
-    <text-field
+    <ev-text-field
       v-model="value"
       :type="type"
       :placeholder="placeholder"
@@ -10,8 +10,8 @@
       :use-max-length="true"
       :border-color="borderColor"
       @input="onInput"
-    />
-    <text-field
+    >``</ev-text-field>
+    <ev-text-field
       v-model="value"
       :type="type"
       :placeholder="placeholder"
@@ -22,8 +22,8 @@
       :border-color="borderColor"
       :disabled="true"
       @input="onInput"
-    />
-    <text-field
+    >``</ev-text-field>
+    <ev-text-field
       v-model="value"
       :type="'password'"
       :placeholder="placeholder"
@@ -34,8 +34,8 @@
       :border-color="borderColor"
       :height="200"
       @input="onInput"
-    />
-    <text-field
+    >``</ev-text-field>
+    <ev-text-field
       v-model="value"
       :type="type"
       :placeholder="placeholder"
@@ -47,16 +47,11 @@
       :disabled="true"
       :height="200"
       @input="onInput"
-    />
+    >``</ev-text-field>
   </div>
 </template>
 <script>
-  import TextField from '@/components/textfield';
-
   export default {
-    components: {
-      TextField,
-    },
     data() {
       return {
         value: '131231',

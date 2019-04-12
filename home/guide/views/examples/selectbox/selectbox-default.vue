@@ -7,7 +7,7 @@
       :items="items"
       @keyup="onKeyUp"
       @select="onSelect"
-    />
+    >``</ev-selectbox>
     <ev-button
       :size="'small'"
       @click="onClickBtn"

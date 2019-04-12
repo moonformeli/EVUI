@@ -1,24 +1,20 @@
 <template>
   <div>
-    <toggle
+    <ev-toggle
       v-model="toggleFlag"
-    />
+    >``</ev-toggle>
     {{ toggleFlag }}
-    <toggle
+    <ev-toggle
       v-model="toggleFlag2"
-    />
+    >``</ev-toggle>
     {{ toggleFlag2 }}
   </div>
 </template>
 
 <script>
   import '@/styles/evui.css';
-  import toggle from '@/components/toggle';
 
   export default {
-    components: {
-      toggle,
-    },
     data() {
       return {
         toggleFlag: true,

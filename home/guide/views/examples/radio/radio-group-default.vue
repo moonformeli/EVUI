@@ -2,29 +2,29 @@
   <div>
     <h5># Default Model</h5>
     <br>
-    <RadioGroup
+    <ev-radio-group
       v-model="bindingValue"
       @change-event="changeEvent"
     >
-      <Radio
+      <ev-radio
         :value="radioObj[0].value"
       >
         {{ radioObj[0].text }}
-      </Radio>
-      <Radio
+      </ev-radio>
+      <ev-radio
         :value="radioObj[1].value"
         class="radioStyle"
       >
         {{ radioObj[1].text }}
-      </Radio>
-      <Radio
+      </ev-radio>
+      <ev-radio
         :value="radioObj[2].value"
         :disabled="true"
         class="radioStyle"
       >
         {{ radioObj[2].text }}
-      </Radio>
-    </RadioGroup>
+      </ev-radio>
+    </ev-radio-group>
     <br>
     <br>
     bind value : {{ bindingValue }}
@@ -32,30 +32,30 @@
     <br>
     <h5># Default Model small size</h5>
     <br>
-    <RadioGroup
+    <ev-radio-group
       v-model="bindingValue2"
       :size="`small`"
       @change-event="changeEvent"
     >
-      <Radio
+      <ev-radio
         :value="radioObj2[0].value"
       >
         {{ radioObj2[0].text }}
-      </Radio>
-      <Radio
+      </ev-radio>
+      <ev-radio
         :value="radioObj2[1].value"
         :disabled="true"
         class="radioStyle"
       >
         {{ radioObj2[1].text }}
-      </Radio>
-      <Radio
+      </ev-radio>
+      <ev-radio
         :value="radioObj2[2].value"
         class="radioStyle"
       >
         {{ radioObj2[2].text }}
-      </Radio>
-    </RadioGroup>
+      </ev-radio>
+    </ev-radio-group>
     <br>
     <br>
     bind value : {{ bindingValue2 }}
@@ -67,14 +67,7 @@
 </template>
 
 <script>
-  import RadioGroup from '@/components/radio/radio-group';
-  import Radio from '@/components/radio/radio';
-
   export default {
-    components: {
-      RadioGroup,
-      Radio,
-    },
     data() {
       return {
         bindingValue: 'cellPhone',

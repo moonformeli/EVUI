@@ -7,7 +7,7 @@
       :step="50"
       :min="100"
       :max="800"
-    />
+    >``</ev-slider>
     <ev-slider
       :slider-style="{
         marginTop: '20px',
@@ -19,7 +19,7 @@
       :step="3300"
       :min="10000"
       :max="80000"
-    />
+    >``</ev-slider>
   </div>
 </template>
 

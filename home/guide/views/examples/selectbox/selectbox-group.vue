@@ -6,7 +6,7 @@
         :is-group="true"
         :init-select-idx="3"
         :items="items1"
-      />
+      >``</ev-selectbox>
       <br><br>
       value: <span style="font-weight: bold; color: blue;">{{ selectedValue1 }}</span>
     </div>
@@ -17,7 +17,7 @@
         :multiple="true"
         :init-select-idx="3"
         :items="items2"
-      />
+      >``</ev-selectbox>
       <br><br>
       value: <span style="font-weight: bold; color: blue;">{{ selectedValue2 }}</span>
     </div>

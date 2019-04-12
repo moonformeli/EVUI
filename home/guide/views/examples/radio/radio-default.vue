@@ -3,28 +3,28 @@
     <br>
     <h5># Default Radio Button</h5>
     <br>
-    <radio
+    <ev-radio
       :value="`value01`"
       v-model="bindVModel01"
     >
       Single Radio
-    </radio>
+    </ev-radio>
     <br>
     <br>
     <h5># Default Disabled Radio Button</h5>
     <br>
-    <radio
+    <ev-radio
       :value="`value03`"
       :disabled="true"
       v-model="bindVModel02"
     >
       Disabled Single Radio
-    </radio>
+    </ev-radio>
     <br>
     <br>
     <h5># Default Small Radio Button</h5>
     <br>
-    <radio
+    <ev-radio
       :value="`value02`"
       :size="`small`"
       v-model="bindVModel03"
@@ -34,12 +34,12 @@
       >
         Small Single Radio
       </p>
-    </radio>
+    </ev-radio>
     <br>
     <br>
     <h5># Default Disabled Small Radio Button</h5>
     <br>
-    <radio
+    <ev-radio
       :value="`value04`"
       :disabled="true"
       :size="`small`"
@@ -50,7 +50,7 @@
       >
         Small Single Radio
       </p>
-    </radio>
+    </ev-radio>
     <br>
     <br>
     <br>
@@ -58,12 +58,7 @@
 </template>
 
 <script>
-  import radio from '@/components/radio/radio';
-
   export default {
-    components: {
-      radio,
-    },
     data() {
       return {
         bindVModel01: 'value01',

@@ -52,7 +52,7 @@
           {
             title: 'Disabled',
             component: sliderDisabled,
-            url: './guide/views/examples/slider/slider-default.vue',
+            url: './guide/views/examples/slider/slider-disabled.vue',
             description: `슬라이더를 비활성화 시킬 수 있습니다.
                           disabled 속성을 true 로 설정하십시오.`,
           },

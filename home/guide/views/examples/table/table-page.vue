@@ -8,7 +8,7 @@
       :filter="true"
       :columns="columns"
       :records="rowData"
-    />
+    >``</ev-table>
   </div>
 </template>
 

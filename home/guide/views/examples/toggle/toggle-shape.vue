@@ -1,38 +1,38 @@
 <template>
   <div>
-    <toggle
+    <ev-toggle
       v-model="toggleValue1"
       :toggle-type="'slide'"
       :toggle-shape="'circle'"
       :toggle-text="largeText"
-    />
+    >``</ev-toggle>
     {{ toggleValue1 }}
     <br>
     <br>
-    <toggle
+    <ev-toggle
       v-model="toggleValue2"
       :toggle-type="'slide'"
       :toggle-shape="'circle'"
       :toggle-text="largeText"
-    />
+    >``</ev-toggle>
     {{ toggleValue2 }}
     <br>
     <br>
-    <toggle
+    <ev-toggle
       v-model="toggleValue3"
       :toggle-type="'slide'"
       :toggle-shape="'square'"
       :toggle-text="largeText"
-    />
+    >``</ev-toggle>
     {{ toggleValue3 }}
     <br>
     <br>
-    <toggle
+    <ev-toggle
       v-model="toggleValue4"
       :toggle-type="'slide'"
       :toggle-shape="'square'"
       :toggle-text="largeText"
-    />
+    >``</ev-toggle>
     {{ toggleValue4 }}
     <br>
     <br>
@@ -41,12 +41,8 @@
 
 <script>
   import '@/styles/evui.css';
-  import toggle from '@/components/toggle';
 
   export default {
-    components: {
-      toggle,
-    },
     data() {
       return {
         toggleValue1: true,

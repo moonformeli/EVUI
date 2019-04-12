@@ -5,7 +5,7 @@
       :disabled="true"
       :init-select-idx="0"
       :items="items"
-    />
+    >``</ev-selectbox>
     <br><br>
     value: <span style="font-weight: bold; color: blue;">{{ selectedValue }}</span>
     <br><br><br><br><br><br><br><br><br><br><br><br>

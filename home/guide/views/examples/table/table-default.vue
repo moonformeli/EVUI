@@ -17,7 +17,7 @@
       :select="'single'"
       :columns="columns"
       :records="rowData"
-    />
+    >``</ev-table>
     <button @click="getSelectedData">test</button>
   </div>
 </template>

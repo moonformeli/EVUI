@@ -1,34 +1,30 @@
 <template>
   <div>
-    <toggle
+    <ev-toggle
       v-model="toggleValue1"
       :toggle-obj="largeObj"
       :toggle-text="largeText1"
       :toggle-font-size="18"
-    />
+    >``</ev-toggle>
     {{ toggleValue1 }}
-    <toggle
+    <ev-toggle
       v-model="toggleValue2"
       :toggle-text="largeText2"
       :toggle-font-size="13"
-    />
+    >``</ev-toggle>
     {{ toggleValue2 }}
-    <toggle
+    <ev-toggle
       v-model="toggleValue3"
       :toggle-obj="smallObj"
-    />
+    >``</ev-toggle>
     {{ toggleValue3 }}
   </div>
 </template>
 
 <script>
   import '@/styles/evui.css';
-  import toggle from '@/components/toggle';
 
   export default {
-    components: {
-      toggle,
-    },
     data() {
       return {
         toggleValue1: true,
