@@ -50,12 +50,10 @@
               @click.stop="onBottomClick"
             >{{ txtBottomBar }}</span>
           </div>
-          <div>
-            <span
-              class="evui-codeview-example-bar-span"
-              @click.stop="onTryClick"
-            >Try It</span>
-          </div>
+          <span
+            class="evui-codeview-example-bar-span"
+            @click.stop="onTryClick"
+          >Try   It</span>
         </div>
       </div>
     </div>
@@ -282,12 +280,6 @@
     font-weight: bold;
     opacity: 0;
     transition: all .3s ease-in-out;
-  }
-  .evui-codeview-example-bar-icon :nth-child(0) div{
-    flex: 2;
-  }
-  .evui-codeview-example-bar-icon :nth-child(1) div{
-    flex: 1;
   }
   .evui-codeview-example-bar-icon:hover i, .evui-codeview-example-bar-icon:hover span{
     color: rgb(30, 101, 188);

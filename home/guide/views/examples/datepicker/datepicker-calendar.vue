@@ -3,34 +3,38 @@
     <div
       class="ev-calendar-temp-wrapper"
     >
-      <ev-calendar
+      <calendar
         ref="calendarRef"
         :datepicker-options="obj1"
         class="evui-calendar-temp"
-      >``</ev-calendar>
-      <ev-calendar
+      >``</calendar>
+      <calendar
         ref="calendarRef"
         :datepicker-options="obj2"
         class="evui-calendar-temp"
-      >``</ev-calendar>
-      <ev-calendar
+      >``</calendar>
+      <calendar
         ref="calendarRef"
         :datepicker-options="obj3"
         class="evui-calendar-temp"
-      >``</ev-calendar>
-      <ev-calendar
+      >``</calendar>
+      <calendar
         ref="calendarRef"
         :datepicker-options="obj4"
         class="evui-calendar-temp"
-      >``</ev-calendar>
+      >``</calendar>
     </div>
   </div>
 </template>
 
 <script>
   import '@/styles/evui.css';
+  import calendar from '@/components/datepicker/calendar';
 
   export default {
+    components: {
+      calendar,
+    },
     data() {
       return {
         toggleFlag: true,
