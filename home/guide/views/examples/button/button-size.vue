@@ -13,8 +13,10 @@
         :size="btn.size"
         :shape="btn.shape"
       >
-        <i :class="btn.iconCls"/>
-        {{ btn.text }}
+        <i
+          :class="btn.iconCls"
+          v-text = "btn.text"
+        >``</i>
       </ev-button>
       <br>
     </div>
@@ -25,12 +27,7 @@
   export default {
     data() {
       return {
-        btnList: this.getBtnList(),
-      };
-    },
-    methods: {
-      getBtnList() {
-        return [
+        btnList: [
           [
             { size: 'small', shape: 'square', text: 'small' },
             { size: 'medium', shape: 'square', text: 'medium' },
@@ -52,8 +49,8 @@
             { size: 'large', shape: 'square', text: 'large' },
             { size: 'large', shape: 'circle', text: '', iconCls: 'ei ei-bell' },
           ],
-        ];
-      },
+        ],
+      };
     },
   };
 </script>
