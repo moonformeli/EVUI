@@ -53,7 +53,7 @@
           <span
             class="evui-codeview-example-bar-span"
             @click.stop="onTryClick"
-          >Try   It</span>
+          >Try It</span>
         </div>
       </div>
     </div>

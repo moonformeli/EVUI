@@ -118,6 +118,7 @@
   export default {
     data() {
       return {
+        allList: ['Base01', 'Base02', 'Base03', 'Base04'],
         allCheckClick: false,
         allCheckClick1: false,
         obj0: [
@@ -171,11 +172,10 @@
     },
     watch: {
       bindList(list) {
-        const allList = ['Base01', 'Base02', 'Base03', 'Base04'];
-        if (!(allList instanceof Array) || !(list instanceof Array)) {
+        if (!(this.allList instanceof Array) || !(list instanceof Array)) {
           console.log('All List or Bind List are not correct format (:Array)!');
         } else {
-          const a = allList.map(x => x).sort();
+          const a = this.allList.map(x => x).sort();
           const l = list.map(x => x).sort();
           if (_.isEqual(a, l)) {
             this.allCheckClick = true;
@@ -203,9 +203,8 @@
         console.log(`e : ${e}`);
       },
       allCheckEvent(e) {
-        const allList = ['Base01', 'Base02', 'Base03', 'Base04'];
         if (e.target.checked) {
-          this.bindList.splice(0, allList.length, ...allList);
+          this.bindList.splice(0, this.allList.length, ...this.allList);
         } else {
           this.bindList.splice(0);
         }

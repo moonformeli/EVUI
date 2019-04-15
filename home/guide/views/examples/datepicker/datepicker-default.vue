@@ -1,13 +1,30 @@
 <template>
   <div>
     <ev-datepicker
+      v-model="test"
       class="evui-datepicker-temp"
     >``</ev-datepicker>
+    value: {{ test }}
     <ev-datepicker
       v-model="bindDay"
       :options="option"
       class="evui-datepicker-temp"
     >``</ev-datepicker>
+    value: {{ bindDay }}
+    <ev-datepicker
+      v-model="bindDay2"
+      :options="option2"
+      :size="'fit'"
+      class="evui-datepicker-temp"
+    >``</ev-datepicker>
+    value: {{ bindDay2 }}
+    <ev-datepicker
+      v-model="bindDay3"
+      :options="option3"
+      :size="'fit'"
+      class="evui-datepicker-temp"
+    >``</ev-datepicker>
+    value: {{ bindDay2 }}
   </div>
 </template>
 
@@ -17,10 +34,23 @@
   export default {
     data() {
       return {
+        test: null,
         bindDay: '2018-07-09',
         option: {
           selectDayType: 'day',
           initSelectDayFlag: true,
+        },
+        bindDay2: '2019-04-09',
+        option2: {
+          selectDayType: 'day',
+          initSelectDayFlag: true,
+        },
+        bindDay3: '2019-04-09',
+        option3: {
+          selectDayType: 'day',
+          initSelectDayFlag: true,
+          limitToday: true,
+          initLimitDay: new Date(new Date().setDate(new Date().getDate() - 1)),
         },
       };
     },
