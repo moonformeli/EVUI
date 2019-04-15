@@ -35,25 +35,26 @@
           :options="codeOption"
         />
       </div>
-      <div
-        class="evui-codeview-example-bar"
-      >
+      <div class="evui-codeview-example-bar">
         <div
           :class="selectIconClasses"
           class="evui-codeview-example-bar-icon"
+          @click.stop="onBottomClick"
         >
           <div>
             <icon
-              class="fa-sort-down"/>
+              class="fas fa-sort-down"
+            />
             <span
               class="evui-codeview-example-bar-span"
-              @click.stop="onBottomClick"
             >{{ txtBottomBar }}</span>
           </div>
-          <span
-            class="evui-codeview-example-bar-span"
+          <ev-button
+            ref="try"
+            type="text"
+            class="evui-codeview-example-bar-button"
             @click.stop="onTryClick"
-          >Try It</span>
+          >Try it</ev-button>
         </div>
       </div>
     </div>
@@ -178,6 +179,13 @@
           this.boxHeight = exampleLayerHeight + descriptionLayerHeight + 50;
         }
         this.isExpand = !this.isExpand;
+
+        const tryClasses = this.$refs.try.$el.classList; /* expand시 try it 고정 */
+        if (tryClasses.contains('evui-codeview-example-bar-button-fix')) {
+          tryClasses.remove('evui-codeview-example-bar-button-fix');
+        } else {
+          tryClasses.add('evui-codeview-example-bar-button-fix');
+        }
       },
       onTryClick: function onTryClick() {
         const parser = new DOMParser();
@@ -248,14 +256,14 @@
     left: 0px;
     bottom: 0px;
     width: 100%;
-    height: 37px;
+    height: 41px;
     z-index: 10;
     background-color: #ffffff;
     transition: background-color .2s ease-in-out;
   }
   .evui-codeview-example-bar:hover{
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #F9FAFC;
   }
   .evui-codeview-example:hover{
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -267,15 +275,15 @@
     display: flex;
     justify-content: space-around;
   }
-  .evui-codeview-example-bar-icon i{
-    height: 100%;
-    line-height: 30px;
+  .evui-codeview-example-bar-icon i{ /* 수정 */
+    /* height: 100%; */
+    /* line-height: 30px; */
     font-size: 16px;
     color: rgba(30, 101, 188, 0.5);
     transition: all .3s ease-in-out;
   }
   .evui-codeview-example-bar-icon span{
-    line-height: 30px;
+    line-height: 40px;
     font-size: 13px;
     font-weight: bold;
     opacity: 0;
@@ -286,6 +294,27 @@
     opacity: 1;
     transform: translateX(-6px);
     transition: all .3s ease-out;
+  }
+  .evui-codeview-example-bar-button{ /* 추가 */
+    position: absolute;
+    right: 28px;
+    color: rgb(30, 101, 188);
+    opacity: 0;
+    outline: none;
+  }
+  .evui-codeview-example-bar-button-fix{ /* 추가 */
+    line-height: 40px;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    opacity: 1;
+  }
+  .evui-codeview-example-bar-icon:hover button { /* 추가 */
+    line-height: 40px;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    opacity: 1;
   }
   .evui-codeview-example-bar-icon.select-down i{
     transform: rotate(180deg);
