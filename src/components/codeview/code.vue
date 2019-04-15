@@ -28,6 +28,7 @@
       <div class="evui-codeview-split-layer"/>
       <div
         ref="codeLayer"
+        :style="{visibility: 'hidden'}"
         class="evui-codeview-code-layer"
       >
         <codemirror
@@ -150,11 +151,13 @@
     },
     mounted() {
       const descriptionLayerHeight = this.$refs.descriptionLayer ?
-        this.$refs.descriptionLayer.getBoundingClientRect().height + 14.5 : 0;
+        this.$refs.descriptionLayer.getBoundingClientRect().height + 14 : 4;
       const exampleLayerHeight = this.$refs.exampleLayer.getBoundingClientRect().height;
-      this.boxHeight = this.isBottom ?
-        exampleLayerHeight + descriptionLayerHeight + 40 :
-        exampleLayerHeight + descriptionLayerHeight + 50;
+      if (this.isBottom) {
+        this.boxHeight = exampleLayerHeight + 94;
+      } else {
+        this.boxHeight = exampleLayerHeight + descriptionLayerHeight + 50;
+      }
     },
     created() {
       this.$http.get(this.codeUrl)
@@ -171,21 +174,23 @@
         const codeLayerHeight = this.$refs.codeLayer.getBoundingClientRect().height;
         const exampleLayerHeight = this.$refs.exampleLayer.getBoundingClientRect().height;
         const descriptionLayerHeight = this.$refs.descriptionLayer ?
-          this.$refs.descriptionLayer.getBoundingClientRect().height + 14.5 : 0;
+          this.$refs.descriptionLayer.getBoundingClientRect().height + 14 : 4;
         if (this.txtBottomBar === 'Expand') {
           this.txtBottomBar = 'Hide';
           this.boxHeight = this.isBottom ?
-            codeLayerHeight + exampleLayerHeight + descriptionLayerHeight :
+            codeLayerHeight + exampleLayerHeight + 40 :
             codeLayerHeight + exampleLayerHeight + descriptionLayerHeight + 33;
+          this.$refs.codeLayer.style.visibility = 'visible';
         } else {
           this.txtBottomBar = 'Expand';
           this.boxHeight = this.isBottom ?
-            exampleLayerHeight + descriptionLayerHeight :
+            exampleLayerHeight + 54 :
             exampleLayerHeight + descriptionLayerHeight + 50;
+          this.$refs.codeLayer.style.visibility = 'hidden';
         }
         this.isExpand = !this.isExpand;
 
-        const tryClasses = this.$refs.try.$el.classList; /* expand시 try it 고정 */
+        const tryClasses = this.$refs.try.$el.classList;
         if (tryClasses.contains('evui-codeview-example-bar-button-fix')) {
           tryClasses.remove('evui-codeview-example-bar-button-fix');
         } else {
@@ -302,21 +307,21 @@
     transform: translateX(-6px);
     transition: all .3s ease-out;
   }
-  .evui-codeview-example-bar-button{ /* 추가 */
+  .evui-codeview-example-bar-button{
     position: absolute;
     right: 28px;
     color: rgb(30, 101, 188);
     opacity: 0;
     outline: none;
   }
-  .evui-codeview-example-bar-button-fix{ /* 추가 */
+  .evui-codeview-example-bar-button-fix{
     line-height: 40px;
     padding: 0 !important;
     font-size: 13px !important;
     font-weight: bold !important;
     opacity: 1;
   }
-  .evui-codeview-example-bar-icon:hover button { /* 추가 */
+  .evui-codeview-example-bar-icon:hover button {
     line-height: 40px;
     padding: 0 !important;
     font-size: 13px !important;
@@ -325,6 +330,7 @@
   }
   .evui-codeview-example-bar-icon.select-down i{
     transform: rotate(180deg);
+    vertical-align: top;
     transition: transform .4s ease-out;
   }
   .evui-codeview-example-bar-icon, .evui-codeview-example-bar-icon-span {
