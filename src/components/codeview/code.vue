@@ -41,19 +41,20 @@
         <div
           :class="selectIconClasses"
           class="evui-codeview-example-bar-icon"
+          @click.stop="onBottomClick"
         >
           <div>
             <icon
               class="fa-sort-down"/>
             <span
               class="evui-codeview-example-bar-span"
-              @click.stop="onBottomClick"
             >{{ txtBottomBar }}</span>
           </div>
-          <span
-            class="evui-codeview-example-bar-span"
+          <ev-button
+            type="text"
+            class="evui-codeview-example-bar-button"
             @click.stop="onTryClick"
-          >Try It</span>
+          >Try it</ev-button>
         </div>
       </div>
     </div>
@@ -186,22 +187,21 @@
         const javascriptCode = parseData.getElementsByTagName('script')[0].innerHTML;
         const styleCode = parseData.getElementsByTagName('style')[0];
 
-        let scriptLinkString = this.scriptTagInjection('https://unpkg.com/vue')
-          + this.scriptTagInjection('https://unpkg.com/evui@2.1.0/dist/evui.min.js');
+        let scriptLinkString = this.linkTagInjection('https://unpkg.com/evui@2.1.0/dist/main.css');
+        scriptLinkString += this.scriptTagInjection('https://unpkg.com/vue');
+        scriptLinkString += this.scriptTagInjection('https://unpkg.com/evui@2.1.0/dist/evui.min.js');
         if (javascriptCode.includes('moment')) {
           scriptLinkString += this.scriptTagInjection('https://momentjs.com/downloads/moment.js');
         }
 
         let vueObjString = javascriptCode;
         vueObjString = vueObjString.substring(vueObjString.indexOf('{'), vueObjString.lastIndexOf(';'));
-        vueObjString = `{
-        el: '#app', ${vueObjString.substring(vueObjString.indexOf('{') + 1)}`;
+        vueObjString = `{\nel: '#app', ${vueObjString.substring(vueObjString.indexOf('{') + 1)}`;
 
-        const cssLinkString = '@import url("https://unpkg.com/evui@2.1.0/dist/main.css");';
-
-        const htmlString = `${scriptLinkString}<div id="app">${templateCode.replace(/``/gi, '')}</div>`;
+        const htmlString =
+          `<html>\n<head>\n${scriptLinkString}</head>\n<body>\n<div id="app">${templateCode.replace(/``/gi, '')}</div>\n</body>\n</html>`;
         const jsString = `new Vue(${vueObjString})`;
-        const cssString = styleCode ? `${cssLinkString}\n${styleCode.innerHTML.trim()}` : cssLinkString;
+        const cssString = styleCode ? `${styleCode.innerHTML.trim()}` : '';
 
         this.$refs.html.setAttribute('value', htmlString);
         this.$refs.js.setAttribute('value', jsString);
@@ -210,7 +210,10 @@
       },
       scriptTagInjection(srcString) {
         return `<script src="${srcString}"><` +
-          '/script>';
+          '/script>\n';
+      },
+      linkTagInjection(srcString) {
+        return `<link rel="stylesheet" type="text/css" href="${srcString}"/>\n`;
       },
     },
   };
@@ -248,14 +251,14 @@
     left: 0px;
     bottom: 0px;
     width: 100%;
-    height: 37px;
+    height: 41px;
     z-index: 10;
     background-color: #ffffff;
     transition: background-color .2s ease-in-out;
   }
   .evui-codeview-example-bar:hover{
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #f9fafc;
   }
   .evui-codeview-example:hover{
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -286,6 +289,10 @@
     opacity: 1;
     transform: translateX(-6px);
     transition: all .3s ease-out;
+  }
+  .evui-codeview-example-bar-button{
+    position: absolute;
+    right: 10px;
   }
   .evui-codeview-example-bar-icon.select-down i{
     transform: rotate(180deg);
