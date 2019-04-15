@@ -24,7 +24,7 @@
     },
     data() {
       return {
-        preCls: `${prefixCls} ${this.cls}`,
+        preCls: `${prefixCls}${this.cls}`,
       };
     },
   };

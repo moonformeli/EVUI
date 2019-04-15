@@ -35,9 +35,7 @@
           :options="codeOption"
         />
       </div>
-      <div
-        class="evui-codeview-example-bar"
-      >
+      <div class="evui-codeview-example-bar">
         <div
           :class="selectIconClasses"
           class="evui-codeview-example-bar-icon"
@@ -45,12 +43,14 @@
         >
           <div>
             <icon
-              class="fa-sort-down"/>
+              class="fas fa-sort-down"
+            />
             <span
               class="evui-codeview-example-bar-span"
             >{{ txtBottomBar }}</span>
           </div>
           <ev-button
+            ref="try"
             type="text"
             class="evui-codeview-example-bar-button"
             @click.stop="onTryClick"
@@ -152,8 +152,9 @@
       const descriptionLayerHeight = this.$refs.descriptionLayer ?
         this.$refs.descriptionLayer.getBoundingClientRect().height + 14.5 : 0;
       const exampleLayerHeight = this.$refs.exampleLayer.getBoundingClientRect().height;
-
-      this.boxHeight = exampleLayerHeight + descriptionLayerHeight + 50;
+      this.boxHeight = this.isBottom ?
+        exampleLayerHeight + descriptionLayerHeight + 40 :
+        exampleLayerHeight + descriptionLayerHeight + 50;
     },
     created() {
       this.$http.get(this.codeUrl)
@@ -173,12 +174,23 @@
           this.$refs.descriptionLayer.getBoundingClientRect().height + 14.5 : 0;
         if (this.txtBottomBar === 'Expand') {
           this.txtBottomBar = 'Hide';
-          this.boxHeight = codeLayerHeight + exampleLayerHeight + descriptionLayerHeight + 33;
+          this.boxHeight = this.isBottom ?
+            codeLayerHeight + exampleLayerHeight + descriptionLayerHeight :
+            codeLayerHeight + exampleLayerHeight + descriptionLayerHeight + 33;
         } else {
           this.txtBottomBar = 'Expand';
-          this.boxHeight = exampleLayerHeight + descriptionLayerHeight + 50;
+          this.boxHeight = this.isBottom ?
+            exampleLayerHeight + descriptionLayerHeight :
+            exampleLayerHeight + descriptionLayerHeight + 50;
         }
         this.isExpand = !this.isExpand;
+
+        const tryClasses = this.$refs.try.$el.classList; /* expand시 try it 고정 */
+        if (tryClasses.contains('evui-codeview-example-bar-button-fix')) {
+          tryClasses.remove('evui-codeview-example-bar-button-fix');
+        } else {
+          tryClasses.add('evui-codeview-example-bar-button-fix');
+        }
       },
       onTryClick: function onTryClick() {
         const parser = new DOMParser();
@@ -258,7 +270,7 @@
   }
   .evui-codeview-example-bar:hover{
     cursor: pointer;
-    background-color: #f9fafc;
+    background-color: #F9FAFC;
   }
   .evui-codeview-example:hover{
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -278,7 +290,7 @@
     transition: all .3s ease-in-out;
   }
   .evui-codeview-example-bar-icon span{
-    line-height: 30px;
+    line-height: 40px;
     font-size: 13px;
     font-weight: bold;
     opacity: 0;
@@ -290,9 +302,26 @@
     transform: translateX(-6px);
     transition: all .3s ease-out;
   }
-  .evui-codeview-example-bar-button{
+  .evui-codeview-example-bar-button{ /* 추가 */
     position: absolute;
-    right: 10px;
+    right: 28px;
+    color: rgb(30, 101, 188);
+    opacity: 0;
+    outline: none;
+  }
+  .evui-codeview-example-bar-button-fix{ /* 추가 */
+    line-height: 40px;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    opacity: 1;
+  }
+  .evui-codeview-example-bar-icon:hover button { /* 추가 */
+    line-height: 40px;
+    padding: 0 !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    opacity: 1;
   }
   .evui-codeview-example-bar-icon.select-down i{
     transform: rotate(180deg);
