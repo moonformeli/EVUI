@@ -65,6 +65,7 @@
                 <ev-icon
                   v-if="!disableRemoveTab && tabList.length > 1"
                   class="ei-close ev-tab-close-btn"
+                  cls=" "
                   style="margin-left: 3px; font-size: 10px;"
                   @click.native.stop="removeTab(tab.value)"
                 />

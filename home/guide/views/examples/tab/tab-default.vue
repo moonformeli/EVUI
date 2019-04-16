@@ -26,8 +26,8 @@
           :key="item.value"
           :value="item.value"
         >
-          <component
-            :is="item.content"
+          <div
+            style="width: 400px;height: 300px"
           />
         </ev-tab-panel>
       </ev-tabs>
@@ -36,18 +36,7 @@
 </template>
 
 <script>
-  import targetComponent1 from '../checkbox/checkbox-group-default';
-  import targetComponent2 from '../table/table-buffer';
-  import targetComponent3 from '../chart/chart.bar.stack';
-  import targetComponent4 from '../table/table-page';
-
   export default {
-    components: {
-      targetComponent1,
-      targetComponent2,
-      targetComponent3,
-      targetComponent4,
-    },
     data() {
       return {
         seq: 0,
@@ -64,7 +53,6 @@
           this.tabItems.push({
             title: `appended tab${this.seq}`,
             value: `${this.seq}`,
-            content: `targetComponent${(this.seq % 4) + 1}`,
           });
 
           this.seq++;
@@ -74,7 +62,6 @@
         this.tabItems.push({
           title: `appended tab${this.seq}`,
           value: `${this.seq}`,
-          content: `targetComponent${(this.seq % 4) + 1}`,
         });
         // this.activeTabValue = `${this.seq}`;
         this.seq++;

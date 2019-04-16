@@ -14,7 +14,7 @@
           @click="preventDefault"
         />
         <icon
-          class="fa-sort-up"
+          class="fas fa-sort-up"
         />
       </a>
       <a
@@ -26,7 +26,7 @@
           :class="innerDownClasses"
           @click="preventDefault"
         />
-        <icon class="fa-sort-down"/>
+        <icon class="fas fa-sort-down"/>
       </a>
     </div>
     <div

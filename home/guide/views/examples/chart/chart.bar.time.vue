@@ -44,7 +44,6 @@
           },
           legend: {
             show: true,
-            position: 'top',
           },
           horizontal: false,
           axesX: [{
